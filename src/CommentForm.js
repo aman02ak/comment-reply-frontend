@@ -60,7 +60,8 @@ function CommentForm({
                 id: generateId(),
                 name: name,
                 text: comment,
-                date: new Date().toISOString()
+                date: new Date().toISOString(),
+                isCommentEdited: isEditForm
             };
 
             // adding this comment to all comments
@@ -71,7 +72,7 @@ function CommentForm({
     }
   return (
     <div className='comment-form'>
-        <header className='comment-form-header'>Comment</header>
+        <header className='comment-form-header'>{isEditForm ? 'Edit Comment' : 'Comment'}</header>
         <section className='comment-form-input'>
             <OutlinedInput 
                 className='comment-form-name'

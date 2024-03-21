@@ -91,3 +91,9 @@
 .section-container-thread-reply-newReply-child {
     width: 97.5%;
 }
+
+.section-container-thread-header-comment-edited {
+    margin-left: 5px;
+    font-size: 0.6rem;
+    font-weight: 400;
+}

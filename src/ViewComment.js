@@ -53,7 +53,10 @@ function ViewComment({
                             />
                             : <div className='section-container-thread'>
                                 <div className='section-container-thread-header'>
-                                    <p>{comment.name}</p>
+                                    <p>
+                                        {comment.name}
+                                        <span className='section-container-thread-header-comment-edited'>{comment.isCommentEdited ? '(Edited)' : null}</span>
+                                    </p>
                                     <p>{parentCommentDate ? parentCommentDate : new Date(comment.date).toLocaleString()}</p>
                                 </div>
                                 <p className='section-container-thread-text'>{comment.text}</p>
@@ -100,7 +103,10 @@ function ViewComment({
                                                 />
                                             :<div className='section-container-thread'>
                                                 <div className='section-container-thread-header'>
-                                                    <p>{replyComment.name}</p>
+                                                    <p>
+                                                        {replyComment.name}
+                                                        <span className='section-container-thread-header-comment-edited'>{replyComment.isCommentEdited ? '(Edited)' : null}</span>
+                                                    </p>
                                                     <p>{replyCommentDate ? replyCommentDate : new Date(replyComment.date).toLocaleString()}</p>
                                                 </div>
                                                 <p className='section-container-thread-text'>{replyComment.text}</p>

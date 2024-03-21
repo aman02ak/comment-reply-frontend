@@ -49,6 +49,7 @@ function App() {
       parentComment.name = data.name;
       parentComment.text = data.text;
       parentComment.date = data.date;
+      parentComment.isCommentEdited = data.isCommentEdited;
 
       updateComments([...comments]);
     }else{
@@ -58,6 +59,7 @@ function App() {
       replyComment.name = data.name;
       replyComment.text = data.text;
       replyComment.date = data.date;
+      replyComment.isCommentEdited = data.isCommentEdited;
 
       updateComments([...comments]);
     }
