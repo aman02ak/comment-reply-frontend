@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import CommentForm from './CommentForm';
 import ViewComment from './ViewComment';
 
@@ -10,6 +10,17 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 function App() {
   const [comments, updateComments] = useState([]);
   const [sortedByDate, setSortedByDate] = useState(false);
+
+
+  useEffect(() => {
+    // saving to local storage to prevent data loss on page refresh
+    if(comments.length > 0)
+      window.sessionStorage.setItem('myCommentData', JSON.stringify(comments));
+  }, [comments]);
+  useEffect(() => {
+    // reading from local storage to local variable
+    updateComments(JSON.parse(window.sessionStorage.getItem('myCommentData')));
+  }, []);
 
   const handleSort = () => {
     setSortedByDate(!sortedByDate);
