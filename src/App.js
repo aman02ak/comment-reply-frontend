@@ -96,12 +96,14 @@ function App() {
       </div>
       <div className='main-container-section'>
         <div className='main-container-section-sorter'>
-          <span>Sort By: Date and Time</span>
-          {
-            sortedByDate ? 
-            <ArrowDownwardIcon onClick={handleSort}/> 
-            : <ArrowUpwardIcon onClick={handleSort}/>
-          }
+          <span onClick={handleSort}>
+            Sort By: Date and Time
+            {
+              sortedByDate ? 
+              <ArrowDownwardIcon onClick={handleSort}/> 
+              : <ArrowUpwardIcon onClick={handleSort}/>
+            }  
+          </span>
         </div>
         <div className='main-container-section-content'>
           <ViewComment 

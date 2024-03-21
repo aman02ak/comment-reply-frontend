@@ -1,39 +1,64 @@
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 * {
   margin: 0;
   padding: 0;
+  /* border: 1px solid black; */
 }
 
 .main-container {
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
+  align-items: center;
+  /* width: 100vw; */
 }
 
 .main-thread {
   margin: 20px;
 
   box-sizing: border-box;
-  width: calc(100% - 40px);
-  /* height: 200px; */
+  width: calc(90% - 40px);
 }
 
 .main-container-section {
   margin: 0px 20px;
 
   box-sizing: border-box;
-  width: calc(100% - 40px);
+  width: calc(90% - 40px);
 }
 
 .main-container-section-sorter {
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
+}
 
+.main-container-section-sorter > span {
   cursor: pointer;
+  display: flex;
+  gap: 8px;
 }
 
 .main-container-section-content {
   width: 100%;
-  height: 100%;
+}
+
+.not-editable {
+  cursor: not-allowed !important;
 }

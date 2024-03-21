@@ -75,7 +75,7 @@ function CommentForm({
         <header className='comment-form-header'>{isEditForm ? 'Edit Comment' : 'Comment'}</header>
         <section className='comment-form-input'>
             <OutlinedInput 
-                className='comment-form-name'
+                className={`comment-form-name ${isEditForm ? 'not-editable' : null}`}
                 placeholder='Name'
                 value={name}
                 onChange={updateName} 
@@ -94,6 +94,7 @@ function CommentForm({
                 value={comment}
                 onChange={updateComment}
                 multiline   
+                rows={3}
             ></OutlinedInput>
             {
                 !isCommentValid ?

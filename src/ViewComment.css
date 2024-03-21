@@ -1,18 +1,12 @@
 .section-container {
     min-width: 100%;
-    min-height: 100%;
+
     display: flex;
     flex-direction: column;
     gap: 12px;
-    /* justify-content: center;
-    align-items: center; */
 
     color: black;
     font-weight: 500;
-}
-
-.section-container-main-thread {
-    width: 100%;
 }
 
 .section-container-thread {
@@ -64,8 +58,8 @@
 .section-container-thread-delete-button {
     display: inline-block;
     position: relative;
-    top: -64px;
-    right: -100.35%;
+    /* top: -64px; */
+    right: -100.75%;
     cursor: pointer;
 }
 
