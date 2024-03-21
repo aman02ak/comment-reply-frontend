@@ -94,6 +94,7 @@ function ViewComment({
                                         return (
                                             editCommentFormID === replyComment.id ?
                                                 <CommentForm
+                                                    key={replyComment.id}
                                                     isEditForm={true}
                                                     addNewComment={handleSubmitEditComment}
                                                     parentID={comment.id}
@@ -101,7 +102,7 @@ function ViewComment({
                                                     closeCommentAction={() => handleEditComment(-1, -1)}
                                                     editData={replyComment}
                                                 />
-                                            :<div className='section-container-thread'>
+                                            :<div key={replyComment.id} className='section-container-thread'>
                                                 <div className='section-container-thread-header'>
                                                     <p>
                                                         {replyComment.name}
