@@ -14,8 +14,10 @@ function App() {
 
   useEffect(() => {
     // saving to local storage to prevent data loss on page refresh
+    // just one case needs to be handled where we are deleting all of our comments from local storage
     if(comments.length > 0)
       window.sessionStorage.setItem('myCommentData', JSON.stringify(comments));
+    
   }, [comments]);
   useEffect(() => {
     // reading from local storage to local variable
@@ -68,6 +70,9 @@ function App() {
       parentComment.replies = parentComment.replies.filter((comment) => comment.id !== id);
       updateComments([...comments]);
     }
+
+    if(comments.length === 1)
+      window.sessionStorage.setItem('myCommentData', JSON.stringify([]));
   };
 
   const sortedComments = sortedByDate
