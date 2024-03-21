@@ -29,6 +29,15 @@ function App() {
       updateComments([...comments]);
     }
   };
+  const handleDelete = (id, parentID) => {
+    if(!parentID)
+      updateComments((prevComments) => prevComments.filter((comment) => comment.id !== id));
+    else{
+      const parentComment = comments.find((comment) => comment.id === parentID);
+      parentComment.replies = parentComment.replies.filter((comment) => comment.id !== id);
+      updateComments([...comments]);
+    }
+  };
 
   const sortedComments = sortedByDate
     ? [...comments].sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -40,6 +49,7 @@ function App() {
         <CommentForm 
           addNewComment={addNewComment}
           parentID={null}
+          closeComment={false}
         />
       </div>
       <div className='main-container-section'>
@@ -54,6 +64,8 @@ function App() {
         <div className='main-container-section-content'>
           <ViewComment 
             sortedComments={sortedComments}
+            handleDelete={handleDelete}
+            addNewComment={addNewComment}
           />
         </div>
       </div>

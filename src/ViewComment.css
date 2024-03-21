@@ -68,3 +68,26 @@
     right: -100.35%;
     cursor: pointer;
 }
+
+.section-container-thread-reply {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.section-container-thread-reply > div{
+    width: 80%;
+}
+
+.section-container-thread-reply-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.section-container-thread-reply-newReply-child {
+    width: 97.5%;
+}

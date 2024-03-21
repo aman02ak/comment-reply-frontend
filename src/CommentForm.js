@@ -7,7 +7,12 @@ const generateId = () => {
     return '_' + Math.random().toString(36).substr(2, 9);
 };
 
-function CommentForm({ addNewComment, parentID }) {
+function CommentForm({ 
+    addNewComment, 
+    parentID,
+    closeComment,
+    closeCommentAction
+}) {
     const [name, setName] = useState('');
     const [isNameValid, setIsNameValid] = useState(true);
     const [comment, setComment] = useState('');
@@ -88,6 +93,11 @@ function CommentForm({ addNewComment, parentID }) {
             }
         </section>
         <div className='comment-form-submit-button'>
+            {
+                closeComment ?
+                <Button variant="contained" color="error" onClick={closeCommentAction}>CLOSE</Button>
+                : null
+            }
             <Button variant="contained" onClick={handleSubmit}>POST</Button>
         </div>
     </div>
