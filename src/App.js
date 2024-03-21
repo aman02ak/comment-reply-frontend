@@ -14,14 +14,16 @@ function App() {
 
   useEffect(() => {
     // saving to local storage to prevent data loss on page refresh
-    // just one case needs to be handled where we are deleting all of our comments from local storage
+    // just one case needs to be handled where we are deleting all of our 
+    // comments from local storage - covered in handleDelete
     if(comments.length > 0)
       window.sessionStorage.setItem('myCommentData', JSON.stringify(comments));
     
   }, [comments]);
   useEffect(() => {
     // reading from local storage to local variable
-    updateComments(JSON.parse(window.sessionStorage.getItem('myCommentData')));
+    if(JSON.parse(window.sessionStorage.getItem('myCommentData')))
+      updateComments(JSON.parse(window.sessionStorage.getItem('myCommentData')));
   }, []);
 
   const handleSort = () => {
@@ -73,6 +75,7 @@ function App() {
       updateComments([...comments]);
     }
 
+    // CASE - where all comments are deleted, equating with 1 as it records previous state
     if(comments.length === 1)
       window.sessionStorage.setItem('myCommentData', JSON.stringify([]));
   };
