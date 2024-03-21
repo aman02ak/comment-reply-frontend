@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { OutlinedInput, Button } from '@mui/material';
 import './CommentForm.css';
 
@@ -7,16 +7,25 @@ const generateId = () => {
     return '_' + Math.random().toString(36).substr(2, 9);
 };
 
-function CommentForm({ 
+function CommentForm({
+    isEditForm,
     addNewComment, 
     parentID,
     closeComment,
-    closeCommentAction
+    closeCommentAction,
+    editData
 }) {
     const [name, setName] = useState('');
     const [isNameValid, setIsNameValid] = useState(true);
     const [comment, setComment] = useState('');
     const [isCommentValid, setIsCommentValid] = useState(true);
+
+    useEffect(() => {
+        if(isEditForm && editData){
+            setName(editData?.name);
+            setComment(editData?.text);
+        }
+    }, [isEditForm, editData]);
 
     const resetState = () => {
         setName('');
@@ -68,7 +77,8 @@ function CommentForm({
                 className='comment-form-name'
                 placeholder='Name'
                 value={name}
-                onChange={updateName}   
+                onChange={updateName} 
+                disabled={isEditForm}  
             ></OutlinedInput>
             {
                 !isNameValid ?
@@ -98,7 +108,7 @@ function CommentForm({
                 <Button variant="contained" color="error" onClick={closeCommentAction}>CLOSE</Button>
                 : null
             }
-            <Button variant="contained" onClick={handleSubmit}>POST</Button>
+            <Button variant="contained" onClick={handleSubmit}>{isEditForm ? 'UPDATE' : 'POST'}</Button>
         </div>
     </div>
   )

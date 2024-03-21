@@ -29,6 +29,26 @@ function App() {
       updateComments([...comments]);
     }
   };
+  const editExistingComment = (data, commentID, parentID) => {
+    if(!parentID){
+      // parent comment itself
+      const parentComment = comments.find((comment) => comment.id === commentID);
+      parentComment.name = data.name;
+      parentComment.text = data.text;
+      parentComment.date = data.date;
+
+      updateComments([...comments]);
+    }else{
+      // reply on parent thread
+      const parentComment = comments.find((comment) => comment.id === parentID);
+      const replyComment = parentComment.replies.find((comment) => comment.id === commentID);
+      replyComment.name = data.name;
+      replyComment.text = data.text;
+      replyComment.date = data.date;
+
+      updateComments([...comments]);
+    }
+  };
   const handleDelete = (id, parentID) => {
     if(!parentID)
       updateComments((prevComments) => prevComments.filter((comment) => comment.id !== id));
@@ -47,6 +67,7 @@ function App() {
     <div className='main-container'>
       <div className='main-thread'>
         <CommentForm 
+          isEditForm={false}
           addNewComment={addNewComment}
           parentID={null}
           closeComment={false}
@@ -66,6 +87,7 @@ function App() {
             sortedComments={sortedComments}
             handleDelete={handleDelete}
             addNewComment={addNewComment}
+            editExistingComment={editExistingComment}
           />
         </div>
       </div>

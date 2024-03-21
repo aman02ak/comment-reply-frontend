@@ -5,7 +5,8 @@ Functionality Implemented
 2. Validate if name and comment text is entered while adding a comment or a reply
 3. Each comment or reply should be saved with current date and time
 4. The comments and replies should be sortable date and time
-5. Point 4 Pending - Edit functionality
+5. When user clicks on edit he should be able to only edit the comment text and should
+not be allowed to edit the name
 6. Place the delete button on the border of the comment or reply
 7. Point 6 Pending - webstorage usages
 8. Point 7 Pending - application test
