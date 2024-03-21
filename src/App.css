@@ -32,3 +32,8 @@
 
   cursor: pointer;
 }
+
+.main-container-section-content {
+  width: 100%;
+  height: 100%;
+}

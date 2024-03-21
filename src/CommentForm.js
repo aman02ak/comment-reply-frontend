@@ -2,12 +2,23 @@ import React, { useState } from 'react';
 import { OutlinedInput, Button } from '@mui/material';
 import './CommentForm.css';
 
-function CommentForm() {
+// Function to generate a unique ID for comments and replies
+const generateId = () => {
+    return '_' + Math.random().toString(36).substr(2, 9);
+};
+
+function CommentForm({ addNewComment, parentID }) {
     const [name, setName] = useState('');
     const [isNameValid, setIsNameValid] = useState(true);
     const [comment, setComment] = useState('');
     const [isCommentValid, setIsCommentValid] = useState(true);
 
+    const resetState = () => {
+        setName('');
+        setIsNameValid(true);
+        setComment('');
+        setIsCommentValid(true);
+    };
     const updateName = (e) => {
         setName(e.target.value);
         setIsNameValid(true);
@@ -17,7 +28,7 @@ function CommentForm() {
         setIsCommentValid(true);
     };
     const validateName = (text) => {
-        var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+        var regName = /^[a-zA-Z ]+$/;
         return regName.test(text);
     }
     const validateComment = (text) => {
@@ -31,6 +42,17 @@ function CommentForm() {
 
         if(tempIsNameValid && tempIsCommentValid) {
             // perform submit action
+            const newCommentWithDate = {
+                id: generateId(),
+                name: name,
+                text: comment,
+                date: new Date().toISOString()
+            };
+
+            // adding this comment to all comments
+            addNewComment(newCommentWithDate, parentID);
+            // resent current state
+            resetState();
         }
     }
   return (

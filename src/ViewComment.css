@@ -1,0 +1,70 @@
+.section-container {
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    /* justify-content: center;
+    align-items: center; */
+
+    color: black;
+    font-weight: 500;
+}
+
+.section-container-main-thread {
+    width: 100%;
+}
+
+.section-container-thread {
+    width: 97.5%;
+    min-height: 150px;
+
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #a8a8a82b;
+    border-radius: 10px;
+
+    /* display: flex;
+    flex-direction: column; */
+    gap: 10px;
+    font-size: 0.95rem;
+    font-weight: 400;
+
+    /* position: absolute; */
+}
+
+.section-container-thread-text {
+    min-height: 60px;
+    overflow: auto;
+}
+
+.section-container-thread-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.section-container-thread-action-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+
+    color: blue;
+    font-weight: 500;
+}
+
+.section-container-thread-action-button span {
+    cursor: pointer;
+}
+
+.section-container-thread-delete-button {
+    display: inline-block;
+    position: relative;
+    top: -64px;
+    right: -100.35%;
+    cursor: pointer;
+}
